@@ -1,6 +1,6 @@
 from time import sleep
 from pynput import keyboard
-from pyautogui import locateOnScreen, moveTo, click as mouse_click, screenshot, alert  # type: ignore
+from pyautogui import moveTo, click as mouse_click, screenshot, alert  # type: ignore
 import pytesseract
 from PIL import Image, ImageEnhance
 import numpy as np
@@ -135,7 +135,11 @@ def start_run():
     for card in cards:
         for desired_card in DESIRED_CARDS:
             if fuzz.ratio(card, desired_card) > 80:
-                alert(title="Card found!", text=f"The card '{card}' has been detected!")
+                print(f"Found desired card: {card}")
+                alert(
+                    title="Card found!",
+                    text=f"The card '{desired_card}' has been detected!",
+                )
                 return
 
     sleep(5.0)
