@@ -70,7 +70,7 @@ def get_text(x, y, width, height, save=False):
         img,
         config='-c preserve_interword_spaces=1 -c tessedit_char_whitelist="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz" --psm 7',
     )
-    return text.lower().strip()
+    return " ".join(text.lower().strip().split())
 
 
 def restart_run():
